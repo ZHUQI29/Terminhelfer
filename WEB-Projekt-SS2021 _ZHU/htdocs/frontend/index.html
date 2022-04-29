@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Terminhelfer</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS v5.0.2 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/mystyle.css">
+    <link rel="shortcut icon" type="image/x-icon" href="../../favicons/favicon-16x16.ico">
+  </head>
+  <body class="bg-dark">
+    <div class="container bg-dark">
+      <div class="row">
+        <div class="col-md-12">
+            <div class="w-100">
+              <img src="images/logo.png" alt="doodle logo" class="float-start">
+              <div class="float-end p-4">
+                <div id="notLeggedIn">
+                  <a href="" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
+                  <a href="" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#registerModal">Register</a>  
+                </div>
+                <div id="loggedIn">
+                    <a href="#!" class="btn btn-dark p-2 text-center user_name">&nbsp;</a>
+                    <a href="#!" class="btn  btn-sm btn-danger btn_logout">Logout</a>
+                </div>
+              </div>
+            </div>
+            
+            
+            <div class="card w-100 main_data bg-dark text-light border border-light all_appointments">
+                <div class="card-body">
+                    <div class="w-100">
+                    <h4 class="card-title float-start">Appointments</h4>
+                      <div class="float-end">
+                        <button type="button" class="btn btn-light btn_calander">Calender</button>  
+                      </div>  
+                    </div>
+                    
+                    <div class="row row-cols-1 row-cols-md-2 g-4 w-100" id="all_appointments">
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                          <div class="card add_appointment_card bg-primary text-light"  data-bs-toggle="modal" data-bs-target="#addAppoitmentModal">
+                            <div class="card-body">
+                              <h4 class="card-title">Add Appointment</h4>
+                              <p class="card-text">press this card to add a new appointment to the board. You can delete appointments within the specific appointment</p>
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card w-100 p-3 invisible appointment_details  bg-dark text-light border border-light">
+              <div>
+                <h1 class="float-start">Title</h1>
+                <button href="#!" id="btn_delete_appointment" class="btn btn-sm btn-danger m-3 btn_delete_appointment"> Delete</button>
+                <div class="float-end rounded-pill bg-light p-2">
+                  <button type="button" title="close" class="btn-close"></button>  
+                </div>
+                
+              
+              </div>
+              
+              <p class="appt_info">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste reprehenderit nisi dolore sapiente?</p>
+              <div class="row appt_dates">
+                
+              </div>
+              <hr>
+              <form action="" method="post" id="apptForm">
+                <div class="mb-3">
+                  <label for="" class="form-label">Name</label>
+                  <input type="hidden" name="id">
+                  <input type="text" name="name" class="form-control bg-dark text-light border border-light" placeholder="Name">
+                </div>
+                <div class="mb-3">
+                  <label for="" class="form-label">Comments</label>
+                  <textarea name="comment" class="form-control  bg-dark text-light border border-light" placeholder="Comments"></textarea>
+                </div>
+                <p class="text-danger error_msg"></p>
+                <input type="submit" value="Post Comment" class="btn btn-primary float-end">
+                
+                <div class="float-end">
+                  <input type="button" value="Vote" class="btn btn-success me-2 float-end" id="voteBtn">
+                  
+                  <button type="button" class="btn btn-info" id="btnStat"  data-bs-toggle="modal" data-bs-target="#statModal" data-id="">Show Stat </button> &nbsp;
+                </div>
+                
+              </form>
+              <hr>
+              <div class="row" id="all_comments">
+                <div class="col-12">
+                  <h6>Username - <i>Said</i></h6>
+                  <i class="ps-4"> </i>
+                  <hr>
+                </div>
+              </div>
+              
+            </div>
+            <div class="card w-100 p-3 invisible appointment_calander  bg-dark text-light border border-light">
+              <div>
+                <h1 class="float-start">Calender</h1>
+                <div class="float-end rounded-pill bg-light p-2">
+                  <button type="button" class="btn-close"></button>  
+                </div>
+              </div>
+              <div class="row appt_calender">
+                
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" role="dialog">
+      <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-body">
+              <button type="button" class="btn-close float-end" data-bs-dismiss="modal" aria-label="Close"></button>
+              
+              <div class="card border-0">
+                <div class="card-body">
+                  <h4 class="card-title">Login</h4>
+                  <form action="" method="POST" id="loginForm">
+                    <br />
+                    <div class="form-group">
+                      <label>Username</label>
+                      <input type="text" class="form-control" name="username" placeholder="Enter Username">
+                    </div>
+                    <div class="form-group">
+                      <label>Password</label>
+                      <input type="password" class="form-control" name="password" placeholder="Password">
+                    </div>
+                    <br>
+                    <p class="text-danger error_msg"></p>
+                    <br>
+                    <button type="submit" class="btn btn-primary float-end">Submit</button>
+                  </form>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal fade" id="registerModal">
+      <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-body">
+              <button type="button" class="btn-close float-end" data-bs-dismiss="modal" aria-label="Close"></button>
+              
+              <div class="card border-0">
+                <div class="card-body">
+                  <h4 class="card-title">Create New Account</h4>
+                  <form action="" method="POST" id="registerForm">
+                    <div class="form-group">
+                      <label>Username</label>
+                      <input type="text" class="form-control" name="username" placeholder="Username">
+                    </div>
+                    <div class="form-group">
+                      <label>Password</label>
+                      <input type="password" class="form-control" name="password" placeholder="Password">
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="form-group col-6">
+                        <label>First Name</label>
+                        <input type="text" class="form-control" name="firstname" placeholder="First Name">
+                      </div>
+                      <div class="form-group col-6">
+                        <label>Last Name</label>
+                        <input type="text" class="form-control" name="lastname" placeholder="Last Name">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label>Email address</label>
+                      <input type="email" class="form-control" name="email" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                      <label>Birthday</label>
+                      <input type="date" class="form-control" name="birthday" placeholder="Birthday">
+                    </div>
+                    <br>
+                    <p class="text-danger error_msg"></p>
+                    <br>
+                    <button type="submit" class="btn btn-primary float-end">Submit</button>
+                  </form>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add Appointment Modal -->
+    <div class="modal fade" id="addAppoitmentModal">
+      <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-body">
+              <button type="button" class="btn-close float-end" data-bs-dismiss="modal" aria-label="Close"></button>
+              
+              <div class="card border-0">
+                <div class="card-body">
+                  <h4 class="card-title">Add New Appointment</h4>
+                  <form action="" method="POST" id="addAppoitmentForm">
+                    <div class="form-group">
+                      <label>Name Of Appointment</label>
+                      <input type="text" name="appt_name" class="form-control" placeholder="Name Of Appointment">
+                    </div>
+                    <div class="form-group">
+                      <label>Additional Information</label>
+                      <textarea class="form-control" name="appt_info" rows="3" placeholder="Additional Information"></textarea>
+                    </div>
+                    <br>
+                    <div class="row">
+                      <div class="col-9">
+                        Add Date
+                      </div>
+                      <div class="col-3">
+                        <button type="button" class="btn btn-sm btn-primary float-end" id="add_date_btn" disabled>+</button>
+                      </div>
+                    </div>
+                    <div class="row" id="date_default_input">
+                      <div class="col-4">
+                        <div class="form-group">
+                          <label>Date</label>
+                          <input type="date" name="date[]" class="form-control" placeholder="Date">
+                        </div>
+                      </div>
+                      <div class="col-4">
+                        <div class="form-group">
+                          <label>Start Time</label>
+                          <input type="time" name="time1[]" class="form-control" placeholder="Time">
+                        </div>
+                      </div>
+                      <div class="col-4">
+                        <div class="form-group">
+                          <label>End Time</label>
+                          <input type="time" name="time2[]" class="form-control" placeholder="Time">
+                        </div>
+                      </div>
+                    </div>
+                    <div id="other_dates">
+                        
+                    </div>
+                    <br>
+                    <p class="text-danger error_msg"></p>
+                    <br>
+                    <button type="submit" class="btn btn-primary float-end">Submit</button>
+                  </form>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stat Appointment Modal -->
+    <div class="modal fade" id="statModal" role="dialog">
+      <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-body">
+              <button type="button" class="btn-close float-end" data-bs-dismiss="modal" aria-label="Close"></button>
+              
+              <h2>Statistics</h2>
+              <div class="appt_stats m-2" style="max-width: max-content;">
+                
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script> 
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+    <!-- Custom JavaScript -->
+    <script src="js/myscript.js"></script>
+  </body>
+</html>

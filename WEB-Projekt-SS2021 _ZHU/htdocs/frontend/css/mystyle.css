@@ -1,0 +1,10 @@
+.form-check{
+    display: table-caption;
+}
+.form-check input[type="checkbox"] {
+    width: 25px;
+    height: 25px;
+}
+.appointment_card , .add_appointment_card{
+    cursor: pointer;
+}
