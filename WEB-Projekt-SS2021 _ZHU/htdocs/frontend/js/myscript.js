@@ -137,13 +137,13 @@ $(document).ready(function(){
             }
         });
     })
-    $(".appointment_calander").on('click','.btn-close',function(){
+    $(".appointment_calander").on('click','.btn-close',function(){//日历
         $(".appointment_calander").addClass('invisible');
         $(".all_appointments").show();
         $(".appointment_details").hide();
     })
 
-    $("#btn_delete_appointment").on('click',function(){
+    $("#btn_delete_appointment").on('click',function(){//删除
         var data_id = $(this).attr('data-id');
         var confirm = window.confirm("Are you sure you want to delete this appointment?");
         if(confirm){
